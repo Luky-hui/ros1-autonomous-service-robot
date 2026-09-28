@@ -48,9 +48,6 @@ AMCL 定位 / move_base 导航
 | `sebot_ros_kits` | 底盘驱动、TF、传感器、SLAM、AMCL、Navigation、语音等基础能力 |
 | `sebot_ros_stdr` | STDR 仿真与导航测试 |
 
-> [!NOTE]
-> 本仓库是基于 SEBOT T710 实机平台及其 ROS 软件栈整理的工程项目。仓库中同时包含平台基础功能包与任务层代码，部分源码保留原作者及版权信息。本文档按当前仓库源码说明系统结构与实机任务流程，不将平台已有组件归为个人独立实现。
-
 ---
 
 ## ✨ Features
@@ -397,7 +394,7 @@ ACTION_DIY  → Custom / 自定义动作
 | Sensors | RPLIDAR, USB cameras |
 | Languages | C++, Python |
 
-> `sebot_factory/src/sebot_factory/CMakeLists.txt` 同时存在 C++14 标准设置与 `-std=c++11` 编译参数；若后续维护，建议统一编译标准。
+> `sebot_factory/src/sebot_factory/CMakeLists.txt` 同时存在 C++14 标准设置与 `-std=c++11` 编译参数。
 
 ---
 
@@ -480,13 +477,11 @@ sebot_factory/src/sebot_factory/res/model/config_ppncnna.json
 /root/workspace/sebot-t710-competition/sebot_factory/src/sebot_factory/res/model
 ```
 
-请修改为当前设备上的实际路径，例如：
+请修改为当前设备上的实际路径：
 
 ```text
 /root/workspace/ros1-autonomous-service-robot/sebot_factory/src/sebot_factory/res/model
 ```
-
-如果仓库不位于 `/root/workspace/`，应替换为你的真实路径。
 
 ### 4. Build robot workspace
 
@@ -573,9 +568,9 @@ sebot_ros_kits/src/sebot_slam/
 
 ## ⚠️ Portability Notes
 
-本仓库来自真实机器人运行环境，并非在任意 ROS 设备上 `clone` 后即可直接运行。迁移时尤其需要检查：
+迁移时需要检查：
 
-1. **模型绝对路径**：`config_ppncnna.json` 仍含旧仓库路径，需要修改。
+1. **模型绝对路径**：`config_ppncnna.json` 仍含旧仓库路径。
 2. **设备节点**：`/dev/talon`、`/dev/deepCamera`、`/dev/rgbCamera` 依赖目标机器的 udev / USB 映射。
 3. **场景坐标**：`location.xml` 中坐标与地图强绑定，更换场地后需要重新标定。
 4. **PID 与距离参数**：与底盘、相机安装位置、雷达盲区和机械臂尺寸相关，需要重新调参。
@@ -603,7 +598,7 @@ sebot_ros_kits/src/sebot_slam/
 
 ## 🎯 What This Project Demonstrates
 
-这个项目的重点不是单个算法 Demo，而是将多个机器人子系统在真实硬件上组织成一个可连续执行的自主任务系统：
+将多个机器人子系统在真实硬件上组织成一个可连续执行的自主任务系统：
 
 ```text
 SLAM
