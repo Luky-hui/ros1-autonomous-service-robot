@@ -514,7 +514,7 @@ Task State Machine
 
 本仓库主要用于：
 
-- 机器人竞赛项目展示
+- 项目展示
 - ROS 服务机器人学习
 - SLAM / Navigation 实践
 - 视觉识别与机械操作研究
